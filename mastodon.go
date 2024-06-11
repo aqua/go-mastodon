@@ -162,6 +162,19 @@ func (c *Client) AuthenticateApp(ctx context.Context) error {
 	return c.authenticate(ctx, params)
 }
 
+// AuthenticateAppScope logs in using client credentials and a specified scope.
+func (c *Client) AuthenticateAppScope(ctx context.Context, scope string) error {
+	params := url.Values{
+		"client_id":     {c.Config.ClientID},
+		"client_secret": {c.Config.ClientSecret},
+		"grant_type":    {"client_credentials"},
+		"redirect_uri":  {"urn:ietf:wg:oauth:2.0:oob"},
+		"scope":         {scope},
+	}
+
+	return c.authenticate(ctx, params)
+}
+
 // AuthenticateToken logs in using a grant token returned by Application.AuthURI.
 //
 // redirectURI should be the same as Application.RedirectURI.
