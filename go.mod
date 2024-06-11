@@ -1,6 +1,6 @@
-module github.com/mattn/go-mastodon
+module github.com/aqua/go-mastodon
 
-go 1.21
+go 1.22
 
 require (
 	github.com/gorilla/websocket v1.5.1
